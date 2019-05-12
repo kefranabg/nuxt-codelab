@@ -1,22 +1,25 @@
 # nuxt-codelab
 
-> My polished Nuxt.js project
+Bienvenue dans ce codelab Nuxt.js !!!
 
-## Build Setup
+## Etape 0
+
+- Installer les dépendances avec `npm i`
+- Tester les différentes commandes ci-dessous
 
 ``` bash
-# install dependencies
+# Installer les dépendances
 $ npm install
 
-# serve with hot reload at localhost:3000
+# Lancer l'application en mode développement
 $ npm run dev
 
-# build for production and launch server
+# Lancer le serveur Nuxt pour la production
 $ npm run build
 $ npm start
 
-# generate static project
+# Générer l'application en mode statique
 $ npm run generate
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+Documentation Nuxt.js => [Nuxt.js docs](https://nuxtjs.org).
