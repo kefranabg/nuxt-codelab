@@ -14,7 +14,12 @@ export default {
   fetch({ store }) {
     return store.dispatch('series/fetchSeries')
   },
-  computed: mapState('series', ['list'])
+  computed: mapState('series', ['list']),
+  head() {
+    return {
+      title: 'Series: ' + this.list.length
+    }
+  }
 }
 </script>
 

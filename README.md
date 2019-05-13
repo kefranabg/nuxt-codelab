@@ -2,22 +2,49 @@
 
 ## Etape 5
 
-Dans cette étape, nous allons réaliser une page dédiée aux details d'une série. L'utilisateur doit pouvoir cliquer sur un item de la liste des séries et arriver sur une nouvelle page.
-Voici la structure de l'url attendue : `/series/:id`
+Nous souhaitons mettre en place des métas données dans la balise `<header>` pour nos différentes pages HTML
 
-Consulter la documentation pour voir comment créer une route dynamique : [https://nuxtjs.org/guide/routing#dynamic-routes](https://nuxtjs.org/guide/routing#dynamic-routes)
+Pour cela, Nuxt fournit 2 méthodes:
+- via une configuration générale contenue dans `nuxt.config.js`
+- via une fonction `head()` implémentée dans chaque composant
 
-- Créer une page pour visualiser les détails de la série sélectionnée
-- Sur la page `/pages/series.vue`, ajouter une balise `nuxt-link` pour pouvoir naviguer vers la page détails d'une série
-- Sur la page détail d'une série, récupérer l'id depuis l'url (`this.$route.params.id`) et utiliser cette id pour aller chercher la série correspondante à partir du store (Utiliser un getter vuex est un plus ;) ).
+- Configurer le fichier `nuxt.config.js` pour la configuration générale
+```
+import pkg from './package'
 
-``` 
-// Getter Vuex
-export const getters = {
-  getSerieById: (state) => (serieId) => state.list.find(serie => serie.id === serieId)
+export default {
+  ...
+  head: {
+    title: pkg.name,
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: pkg.description }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ]
+  },
+  ...
 }
 ```
 
-- Afficher des informations de la série récupérée sur la page détail
-- Une fois sur la page `/series/:id`, recharger la page dans le navigateur. Comment résoudre cette erreur ? 
+- Configurer le fichier `pages/series.vue` pour mettre un titre dynamique dans les méta données
+
+```
+export default {
+  data() {
+    return { list: [] },
+  },
+
+  head() {
+    return {
+      title: 'Series: ' + this.list.length
+    }
+  }
+}
+```
+
+Basé sur `vue-meta`: [https://github.com/nuxt/vue-meta](https://github.com/nuxt/vue-meta)
+Pour plus d'infos: [https://nuxtjs.org/api/pages-head#the-head-method](https://nuxtjs.org/api/pages-head#the-head-method)
 
