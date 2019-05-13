@@ -1,23 +1,29 @@
 # nuxt-codelab
 
-## Etape 3
+## Etape 4
 
-Nous souhaitons maintenant charger les données (liste des séries) afin de les afficher dans la page `pages/series.vue`.
-Pour cela, vous devrez utiliser la fonction `getSeries` du fichier `services/api.service.js`.
+Nous souhaitons maintenant réaliser le même système en préchargant les données dans le store.
+Pour cela nous utiliserons la fonction `fetch` qui est basé sur le même principe que `asyncData`.
+La méthode `fetch` est utilisée pour remplir le store avant de faire le rendu de la page. Contrairement à `asyncData`, `fetch` ne merge pas le résultat avec les data du composant.
 
-- Utiliser la fonction `asyncData` pour charger la liste des séries et les afficher sur la page : [https://nuxtjs.org/guide/async-data](https://nuxtjs.org/guide/async-data)
+Dans un premier temps nous allons créer un store `Vuex`. Nuxt.js génère une partie de la configuration du store à partir de l'arborescence du dossier `store` : [https://nuxtjs.org/guide/vuex-store](https://nuxtjs.org/guide/vuex-store)
 
-`asyncData` permet de charger des données avant le rendu d'une page. Cette méthode peut être executer côté serveur ou client.
+- Dans le dossier `store` créer un fichier `series.js`. Nuxt générera automatiquement un module vuex `series`.
 
-- Dans la méthode `asyncData`, ajouter `console.log('asyncData')`
-- Aller sur la page `/` puis naviguer vers `/series`
+Dans ce fichier, vous devrez :
+- Exporter une fonction `state` qui retourne un objet contenant une propriété `list` représentant notre liste de séries (voir [exemple ici](https://nuxtjs.org/guide/vuex-store#modules-mode)).
+- Exporter un objet `mutations` qui contient une méthode `setList` permettant de modifier la liste des séries.
+- Exporter un objet `actions` qui contient une méthode `fetchSeries` qui sera chargé d'appeller la méthode `getSeries` et charger le résultat dans le `state` à l'aide de la mutation.
 
-On remarque que le log `asyncData` est visible sur la console du navigateur car la fontion `asyncData` a été éxécutée côté client. Quand un changement de route est effectué, il n'y a pas de requête envoyée vers le serveur, tout se passe côté client (rafraichissement du template HTML avec vue.js).
 
-- Aller sur la page `/series` et recharger la page à partir de votre navigateur.
+- Dans la page `series.vue`, utiliser la fonction `fetch` pour dispatcher l'action `fetchSeries` :
+``` 
+fetch({ store }) {
+  return store.dispatch('series/fetchSeries')
+}
+```
+- Depuis la page `series.vue` récupérer la liste des séries du store (avec `mapState` par exemple) et les afficher sur la page. 
 
-On remarque que le log `asyncData` est visible sur les logs du serveur car une requête est envoyé au serveur Nuxt pour effectuer le premier rendu.
 
-Voir schéma [https://docs.google.com/presentation/d/1PXWL7s8s0kT9SzKdYxOkVf6gKsCSudSsQF9KTZe7_QM/edit#slide=id.g5809f050c0_0_314](https://docs.google.com/presentation/d/1PXWL7s8s0kT9SzKdYxOkVf6gKsCSudSsQF9KTZe7_QM/edit#slide=id.g5809f050c0_0_314)
 
 
