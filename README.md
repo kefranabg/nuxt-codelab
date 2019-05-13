@@ -45,6 +45,8 @@ export default {
 }
 ```
 
+Vérifier dans les sources HTML du navigateur si la méta donnée est bien présente.
+
 Basé sur `vue-meta`: [https://github.com/nuxt/vue-meta](https://github.com/nuxt/vue-meta)
 Pour plus d'infos: [https://nuxtjs.org/api/pages-head#the-head-method](https://nuxtjs.org/api/pages-head#the-head-method)
 
