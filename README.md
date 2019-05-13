@@ -1,6 +1,6 @@
 # nuxt-codelab
 
-## Etape 5
+## Etape 6
 
 Nous souhaitons mettre en place des métas données dans la balise `<header>` pour nos différentes pages HTML
 
