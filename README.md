@@ -1,6 +1,6 @@
 # nuxt-codelab
 
-## Etape 7
+## Etape 8
 
 Nous souahitons exécuter une fonction avant le rendu d'une page.
 
