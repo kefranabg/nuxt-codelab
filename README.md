@@ -1,50 +1,19 @@
 # nuxt-codelab
 
-## Etape 5
+## Etape 7
 
-Nous souhaitons mettre en place des métas données dans la balise `<header>` pour nos différentes pages HTML
 
-Pour cela, Nuxt fournit 2 méthodes:
-- via une configuration générale contenue dans `nuxt.config.js`
-- via une fonction `head()` implémentée dans chaque composant
+Nous souhaitons mettre en place un sysème de validation permettant de contrôle les paramètres d'un appel par exemple.
 
-- Configurer le fichier `nuxt.config.js` pour la configuration générale
-```
-import pkg from './package'
-
-export default {
-  ...
-  head: {
-    title: pkg.name,
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
-  ...
-}
-```
-
-- Configurer le fichier `pages/series.vue` pour mettre un titre dynamique dans les méta données
-
+- Créer une méthode `validate` dans `pages/series/_id.vue` pour contrôler que l'id est un nombre
 ```
 export default {
-  data() {
-    return { list: [] },
-  },
-
-  head() {
-    return {
-      title: 'Series: ' + this.list.length
-    }
+  validate ({ params }) {
+    return /^\d+$/.test(params.id)
   }
 }
 ```
+- Tester le résultat en se connectant à plusieurs urls: `http://localhost:3000/series/bad` ou `http://localhost:3000/series/0`
 
-Basé sur `vue-meta`: [https://github.com/nuxt/vue-meta](https://github.com/nuxt/vue-meta)
-Pour plus d'infos: [https://nuxtjs.org/api/pages-head#the-head-method](https://nuxtjs.org/api/pages-head#the-head-method)
+Pour plus d'infos: [https://nuxtjs.org/api/pages-validate](https://nuxtjs.org/api/pages-validate)
 

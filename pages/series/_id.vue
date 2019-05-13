@@ -9,6 +9,9 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  validate ({ params }) {
+    return /^\d+$/.test(params.id)
+  },
   fetch({ store }) {
     return store.dispatch('series/fetchSeries')
   },
