@@ -1,27 +1,49 @@
 # nuxt-codelab
 
-## Etape 9
+## Etape 10
 
-Les modules sont des extensions de Nuxt.js qui augmentent ses fonctionnalités.
+Avec les plugins, Nuxt permet l'exécution de code avant d'instancier l'application Vue.js racine.
+Pratique pour l'utilisation de libs externes ou des vôtres.
 
-Nous souhaitons mettre en place un module permettant de partager le résultat de notre développement en direct.
-
-- Installer le module `@nuxtjs/localtunnel`
+- Créer un fichier `plugins/vue-logger.js` (export d'une fonction `log` faisant juste un console.log)
 ```
-npm install --save-dev  @nuxtjs/localtunnel
-```
+import Vue from 'vue'
 
-- Configurer le module dans `nuxt.config.js`
+Vue.prototype.$log = (string) => console.log(">>> " + string)
+```
+- Configurer `nuxt.config.js`
 ```
 export default {
   ...
-  modules: [
-    [ '@nuxtjs/localtunnel', { subdomain: 'codelab_zen' } ],
-  ],
+  plugins: ['~/plugins/vue-logger.js']
   ...
 }
 ```
+- Utiliser la nouvelle fonction dans un composant
+```
+export default {
+  mounted() {
+    this.$log('mounted de mon composant')
+  }
+}
+```
 
-- Se connecter sur: `https://codelabzen.localtunnel.me/`
+Il est aussi possible d'injecter la fonction dans le contexte
+- Créer un fichier `plugins/ctx-logger.js` avec une fonction `log` injecté dans l'app (champ de context)
+```
+export default ({ app }, inject) => {
+  app.log = (string) => console.log('Okay, another function', string)
+}
+```
+- Ajouter le plugin dans `nuxt.config.js`
+- Utiliser la fonction `log` dans une fonction `asyncData`
+```
+export default {
+  asyncData(context){
+    context.app.log('asyncData !!')
+  }
+}
+```
 
-Pour plus d'infos: [https://nuxtjs.org/guide/modules](https://nuxtjs.org/guide/modules)
+Il existe aussi une possibilité de créer une fonction qui combine les 2 types d'injection.
+Pour plus d'infos: [https://nuxtjs.org/guide/plugins](https://nuxtjs.org/guide/plugins)
