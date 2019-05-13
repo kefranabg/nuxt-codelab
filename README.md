@@ -1,6 +1,6 @@
 # nuxt-codelab
 
-## Etape 7
+## Etape 9
 
 Les modules sont des extensions de Nuxt.js qui augmentent ses fonctionnalités.
 
