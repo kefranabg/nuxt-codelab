@@ -12,7 +12,7 @@ Pour cela, vous devrez utiliser la fonction `getSeries` du fichier `services/api
 - Dans la méthode `asyncData`, ajouter `console.log('asyncData')`
 - Aller sur la page `/` puis naviguer vers `/series`
 
-On remarque que le log `asyncData` est visible sur la console du navigateur car la fontion `asyncData` a été éxécutée côté client. Quand un changement de route est effectué, il n'y a pas de requête envoyée vers le serveur, tout se passe côté client (rafraichissement du template HTML avec vue.js).
+On remarque que le log `asyncData` est visible sur la console du navigateur car la fonction `asyncData` a été éxécutée côté client. Quand un changement de route est effectué, il n'y a pas de requête envoyée vers le serveur, tout se passe côté client (rafraichissement du template HTML avec vue.js).
 
 - Aller sur la page `/series` et recharger la page à partir de votre navigateur.
 
