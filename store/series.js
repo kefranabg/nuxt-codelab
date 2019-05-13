@@ -11,8 +11,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchSeries({ commit }) {
+  async fetchSeries({ state, commit }) {
+    if (state.series) return ;
+    
     const series = await getSeries('bad')
     commit('setList', series)
   }
+}
+
+export const getters = {
+  getSerieById: (state) => (serieId) => state.list.find(serie => serie.id === serieId)
 }

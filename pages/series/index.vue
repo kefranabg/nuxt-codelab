@@ -2,7 +2,7 @@
   <div>
     <h1>Series</h1>
     <div v-for="serie in list" :key="serie.id">
-      {{serie.name}}
+      <nuxt-link :to="'series/' + serie.id">{{serie.name}}</nuxt-link>
     </div>
   </div>
 </template>

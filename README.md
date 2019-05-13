@@ -1,29 +1,23 @@
 # nuxt-codelab
 
-## Etape 4
+## Etape 5
 
-Nous souhaitons maintenant réaliser le même système en préchargant les données dans le store.
-Pour cela nous utiliserons la fonction `fetch` qui est basé sur le même principe que `asyncData`.
-La méthode `fetch` est utilisée pour remplir le store avant de faire le rendu de la page. Contrairement à `asyncData`, `fetch` ne merge pas le résultat avec les data du composant.
+Dans cette étape, nous allons réaliser une page dédiée aux details d'une série. L'utilisateur doit pouvoir cliquer sur un item de la liste des séries et arriver sur une nouvelle page.
+Voici la structure de l'url attendue : `/series/:id`
 
-Dans un premier temps nous allons créer un store `Vuex`. Nuxt.js génère une partie de la configuration du store à partir de l'arborescence du dossier `store` : [https://nuxtjs.org/guide/vuex-store](https://nuxtjs.org/guide/vuex-store)
+Consulter la documentation pour voir comment créer une route dynamique : [https://nuxtjs.org/guide/routing#dynamic-routes](https://nuxtjs.org/guide/routing#dynamic-routes)
 
-- Dans le dossier `store` créer un fichier `series.js`. Nuxt générera automatiquement un module vuex `series`.
+- Créer une page pour visualiser les détails de la série sélectionnée
+- Sur la page `/pages/series.vue`, ajouter une balise `nuxt-link` pour pouvoir naviguer vers la page détails d'une série
+- Sur la page détail d'une série, récupérer l'id depuis l'url (`this.$route.params.id`) et utiliser cette id pour aller chercher la série correspondante à partir du store (Utiliser un getter vuex est un plus ;) ).
 
-Dans ce fichier, vous devrez :
-- Exporter une fonction `state` qui retourne un objet contenant une propriété `list` représentant notre liste de séries (voir [exemple ici](https://nuxtjs.org/guide/vuex-store#modules-mode)).
-- Exporter un objet `mutations` qui contient une méthode `setList` permettant de modifier la liste des séries.
-- Exporter un objet `actions` qui contient une méthode `fetchSeries` qui sera chargé d'appeller la méthode `getSeries` et charger le résultat dans le `state` à l'aide de la mutation.
-
-
-- Dans la page `series.vue`, utiliser la fonction `fetch` pour dispatcher l'action `fetchSeries` :
 ``` 
-fetch({ store }) {
-  return store.dispatch('series/fetchSeries')
+// Getter Vuex
+export const getters = {
+  getSerieById: (state) => (serieId) => state.list.find(serie => serie.id === serieId)
 }
 ```
-- Depuis la page `series.vue` récupérer la liste des séries du store (avec `mapState` par exemple) et les afficher sur la page. 
 
-
-
+- Afficher des informations de la série récupérée sur la page détail
+- Une fois sur la page `/series/:id`, recharger la page dans le navigateur. Comment résoudre cette erreur ? 
 
