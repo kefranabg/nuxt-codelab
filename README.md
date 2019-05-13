@@ -1,15 +1,23 @@
 # nuxt-codelab
 
-## Etape 2
+## Etape 3
 
-Nuxt.js vous permet d'étendre la mise en page principale ou de créer des mises en page personnalisées en les ajoutant dans le répertoire layouts. Nuxt possède un layout par défaut : `layouts/default.vue`.
+Nous souhaitons maintenant charger les données (liste des séries) afin de les afficher dans la page `pages/series.vue`.
+Pour cela, vous devrez utiliser la fonction `getSeries` du fichier `services/api.service.js`.
 
-Dans `layouts/default.vue`, la balise `<nuxt />` correspond à la balise `<router-view></router-view>` d'une application vue.js classique. La balise `<nuxt />` se charge d'instancier les différentes pages de votre application lors de la navigation.
+- Utiliser la fonction `asyncData` pour charger la liste des séries et les afficher sur la page : [https://nuxtjs.org/guide/async-data](https://nuxtjs.org/guide/async-data)
 
-Il est possible d'utiliser des layouts différents par pages : [https://nuxtjs.org/guide/views#custom-layout](https://nuxtjs.org/guide/views#custom-layout)
+`asyncData` permet de charger des données avant le rendu d'une page. Cette méthode peut être executer côté serveur ou client.
 
-Plus d'informations sur [https://nuxtjs.org/guide/views#layouts](https://nuxtjs.org/guide/views#layouts)
+- Dans la méthode `asyncData`, ajouter `console.log('asyncData')`
+- Aller sur la page `/` puis naviguer vers `/series`
 
-- Modifier le layout par défaut (`layouts/default.vue`) pour créer une navbar. Vous devrez y ajouter les liens vers `/` et `/series`.
+On remarque que le log `asyncData` est visible sur la console du navigateur car la fontion `asyncData` a été éxécutée côté client. Quand un changement de route est effectué, il n'y a pas de requête envoyée vers le serveur, tout se passe côté client (rafraichissement du template HTML avec vue.js).
+
+- Aller sur la page `/series` et recharger la page à partir de votre navigateur.
+
+On remarque que le log `asyncData` est visible sur les logs du serveur car une requête est envoyé au serveur Nuxt pour effectuer le premier rendu.
+
+Voir schéma [https://docs.google.com/presentation/d/1PXWL7s8s0kT9SzKdYxOkVf6gKsCSudSsQF9KTZe7_QM/edit#slide=id.g5809f050c0_0_314](https://docs.google.com/presentation/d/1PXWL7s8s0kT9SzKdYxOkVf6gKsCSudSsQF9KTZe7_QM/edit#slide=id.g5809f050c0_0_314)
 
 
