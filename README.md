@@ -1,25 +1,11 @@
 # nuxt-codelab
 
-Bienvenue dans ce codelab Nuxt.js !!!
+## Etape 1
 
-## Etape 0
+- Créer une nouvelle page `series.vue` dans le dossier `pages` 
 
-- Installer les dépendances avec `npm i`
-- Tester les différentes commandes ci-dessous
+Nuxt.js génère automatiquement la configuration `vue-router` à partir de l'arborescence du dossier `pages` : [https://nuxtjs.org/guide/routing](https://nuxtjs.org/guide/routing)
 
-``` bash
-# Installer les dépendances
-$ npm install
+- Dans `pages/index.vue` ajouter un lien vers la page `pages/series.vue` grâce à la balise `nuxt-link`: [https://nuxtjs.org/api/components-nuxt-link#the-lt-nuxt-link-gt-component](https://nuxtjs.org/api/components-nuxt-link#the-lt-nuxt-link-gt-component)
 
-# Lancer l'application en mode développement
-$ npm run dev
-
-# Lancer le serveur Nuxt pour la production
-$ npm run build
-$ npm start
-
-# Générer l'application en mode statique
-$ npm run generate
-```
-
-Documentation Nuxt.js => [Nuxt.js docs](https://nuxtjs.org).
+- Dans `pages/series.vue` ajouter un lien vers la page `pages/index.vue` grâce à la balise `nuxt-link`
