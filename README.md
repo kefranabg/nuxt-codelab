@@ -1,11 +1,15 @@
 # nuxt-codelab
 
-## Etape 1
+## Etape 2
 
-- Créer une nouvelle page `series.vue` dans le dossier `pages` 
+Nuxt.js vous permet d'étendre la mise en page principale ou de créer des mises en page personnalisées en les ajoutant dans le répertoire layouts. Nuxt possède un layout par défaut : `layouts/default.vue`.
 
-Nuxt.js génère automatiquement la configuration `vue-router` à partir de l'arborescence du dossier `pages` : [https://nuxtjs.org/guide/routing](https://nuxtjs.org/guide/routing)
+Dans `layouts/default.vue`, la balise `<nuxt />` correspond à la balise `<router-view></router-view>` d'une application vue.js classique. La balise `<nuxt />` se charge d'instancier les différentes pages de votre application lors de la navigation.
 
-- Dans `pages/index.vue` ajouter un lien vers la page `pages/series.vue` grâce à la balise `nuxt-link`: [https://nuxtjs.org/api/components-nuxt-link#the-lt-nuxt-link-gt-component](https://nuxtjs.org/api/components-nuxt-link#the-lt-nuxt-link-gt-component)
+Il est possible d'utiliser des layouts différents par pages : [https://nuxtjs.org/guide/views#custom-layout](https://nuxtjs.org/guide/views#custom-layout)
 
-- Dans `pages/series.vue` ajouter un lien vers la page `pages/index.vue` grâce à la balise `nuxt-link`
+Plus d'informations sur [https://nuxtjs.org/guide/views#layouts](https://nuxtjs.org/guide/views#layouts)
+
+- Modifier le layout par défaut (`layouts/default.vue`) pour créer une navbar. Vous devrez y ajouter les liens vers `/` et `/series`.
+
+

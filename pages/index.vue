@@ -1,8 +1,5 @@
 <template>
-     <div>
-      <nuxt-link to="/series">Series</nuxt-link>
-      <!-- <nuxt-link to="/no-prefetch-route" no-prefetch>No prefetch</nuxt-link> -->
-    </div>
+    <h1>Home</h1>
 </template>
 
 <script>
