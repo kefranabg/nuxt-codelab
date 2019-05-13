@@ -4,6 +4,7 @@ Bienvenue dans ce codelab Nuxt.js !!!
 
 ## Etape 0
 
+- Cloner le projet : `git clone https://github.com/kefranabg/nuxt-codelab.git && cd nuxt-codelab`
 - Installer les dépendances avec `npm i`
 - Tester les différentes commandes ci-dessous
 
