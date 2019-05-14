@@ -31,7 +31,7 @@ export default function (context) {
   }
   ```
 
-  - au de la config de Nuxt (`nuxt.config.js`) [pour toutes les pages]
+  - au niveau de la config de Nuxt (`nuxt.config.js`) [pour toutes les pages]
   ```
   export default {
     ...
