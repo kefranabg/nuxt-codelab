@@ -16,7 +16,7 @@ npm install --save-dev  @nuxtjs/localtunnel
 export default {
   ...
   modules: [
-    [ '@nuxtjs/localtunnel', { subdomain: 'codelab_zen' } ],
+    [ '@nuxtjs/localtunnel', { subdomain: 'codelabzen' } ],
   ],
   ...
 }
