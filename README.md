@@ -16,7 +16,7 @@ On remarque que le log `asyncData` est visible sur la console du navigateur car 
 
 - Aller sur la page `/series` et recharger la page à partir de votre navigateur.
 
-On remarque que le log `asyncData` est visible sur les logs du serveur car une requête est envoyé au serveur Nuxt pour effectuer le premier rendu.
+On remarque que le log `asyncData` est visible sur les logs du serveur car une requête est envoyée au serveur Nuxt pour effectuer le premier rendu.
 
 Voir schéma [https://docs.google.com/presentation/d/1PXWL7s8s0kT9SzKdYxOkVf6gKsCSudSsQF9KTZe7_QM/edit#slide=id.g5809f050c0_0_314](https://docs.google.com/presentation/d/1PXWL7s8s0kT9SzKdYxOkVf6gKsCSudSsQF9KTZe7_QM/edit#slide=id.g5809f050c0_0_314)
 
