@@ -14,7 +14,7 @@ Consulter la documentation pour voir comment créer une route dynamique : [https
 ``` 
 // Getter Vuex
 export const getters = {
-  getSerieById: (state) => (serieId) => state.list.find(serie => serie.id === serieId)
+  getSerieById: (state) => (serieId) => state.list.find(serie => serie.id == serieId)
 }
 ```
 
